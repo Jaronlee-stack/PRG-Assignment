@@ -28,6 +28,9 @@ def load_map(filename, map_struct):
     global MAP_HEIGHT
     
     map_struct.clear()
+    for index in map_file:
+        lines = index.strip("\n")
+        game_map.append(lines)
     
     # TODO: Add your map loading code here
     
@@ -121,3 +124,4 @@ print("-----------------------------------------------------------")
 # TODO: The game!
 path = r"C:\Users\jaron\OneDrive - Ngee Ann Polytechnic\PRG1\final assignment"
 load_map(path + "\\level1.txt",game_map)
+print(game_map)
