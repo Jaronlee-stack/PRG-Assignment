@@ -108,7 +108,7 @@ def show_main_menu():
     print("(Q)uit")
     print("------------------")
 
-def show_town_menu():
+def show_town_menu(day):
     day += 1
     print(f"Day {day}")
     # TODO: Show Day
@@ -136,7 +136,11 @@ print("-----------------------------------------------------------")
 path = r"C:\Users\jaron\OneDrive - Ngee Ann Polytechnic\PRG1\final assignment"
 load_map(path + "\\level1.txt",game_map)
 user = input("your choice? ")
-while user.upper() != "Q":
-    if user.upper() == "N":
+while user != "Q":
+    if user == "N":
         name = input("Greetings, miner! What is your name? ")
         print(f"Pleased to meet you, {name}. Welcome to Sundrop Town!")
+        print(show_town_menu(day))
+        user = input("your choice? ")
+    if user == "B":
+        print(player["GP"]) 
