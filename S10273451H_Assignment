@@ -151,8 +151,21 @@ while user.upper() != "Q":
     (B)ackpack upgrade to carry 12 items for 20 GP 
     (L)eave shop 
     -----------------------------------------------------------
-   GP    
+   GP:    
     -----------------------------------------------------------              """ )
             user = input("your choice? ")
+            if user.upper() == "P":
+                pickaxe_lvl += 1
+                print("GP - price")
+
             if user.upper() == "B":
-                    
+                print("Congratulations! You can now carry 12 items! ")
+                print()
+                print("""
+----------------------- Shop Menu -------------------------
+(B)ackpack upgrade to carry 14 items for 24 GP 
+(L)eave shop
+ ----------------------------------------------------------- 
+GP: 27
+ -----------------------------------------------------------""")
+                user = input("your chocie?")
