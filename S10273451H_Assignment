@@ -29,11 +29,11 @@ def load_map(filename, map_struct):
     global MAP_HEIGHT
     
     map_struct.clear()
+
     for i in map_file:
         lines = i.strip("\n")
-        game_map.append(lines)
-        for j in i:
-            print("{}".format(j))
+        map_struct.append(list(lines))
+
     
     # TODO: Add your map loading code here
     
@@ -77,6 +77,8 @@ def draw_map(game_map, fog, player):
                 map_point = "M"
             else:
                 map_point = rowmap[i]
+            print(map_point,end="")
+        print("|")
     print(f"+{"-"*MAP_WIDTH}+")
     return
 
@@ -144,6 +146,8 @@ while user.upper() != "Q":
         name = input("Greetings, miner! What is your name? ")
         print(f"Pleased to meet you, {name}. Welcome to Sundrop Town!")
         print(show_town_menu(day))
+        initialize_game(game_map, fog, player)
+        draw_map(game_map, fog, player)
         user = input("your choice? ")
     
     if user.upper() == "B":
