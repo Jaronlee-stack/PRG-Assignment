@@ -143,4 +143,15 @@ while user.upper() != "Q":
         print(show_town_menu(day))
         user = input("your choice? ")
     if user.upper() == "B":
-        print(player["GP"]) 
+        while user.upper() != "L":
+            print(f"""
+    ----------------------- Shop Menu ------------------------- 
+    (P)ickaxe upgrade to Level 2 to mine silver ore for 50 GP 
+    (B)ackpack upgrade to carry 12 items for 20 GP 
+    (L)eave shop 
+    -----------------------------------------------------------
+    {player["GP"]}    
+    -----------------------------------------------------------              """ )
+            user = input("your choice? ")
+            if user.upper() == "B":
+                user = input("your choice? ")
