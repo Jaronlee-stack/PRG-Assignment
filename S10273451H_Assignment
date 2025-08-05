@@ -29,9 +29,11 @@ def load_map(filename, map_struct):
     global MAP_HEIGHT
     
     map_struct.clear()
-    for index in map_file:
-        lines = index.strip("\n")
+    for i in map_file:
+        lines = i.strip("\n")
         game_map.append(lines)
+        for j in i:
+            print("{}".format(j))
     
     # TODO: Add your map loading code here
     
