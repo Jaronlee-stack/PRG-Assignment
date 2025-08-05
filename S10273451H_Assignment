@@ -29,8 +29,8 @@ def load_map(filename, map_struct):
     
     map_struct.clear()
     for index in map_file:
-        # lines = index.strip("\n")
-        game_map.append(index)
+        lines = index.strip("\n")
+        game_map.append(lines)
     
     # TODO: Add your map loading code here
     
@@ -134,4 +134,8 @@ print("-----------------------------------------------------------")
 # TODO: The game!
 path = r"C:\Users\jaron\OneDrive - Ngee Ann Polytechnic\PRG1\final assignment"
 load_map(path + "\\level1.txt",game_map)
-print(game_map)
+user = input("your choice? ")
+while user.upper() != "Q":
+    if user.upper() == "N":
+        name = input("Greetings, miner! What is your name? ")
+        print(f"Pleased to meet you, {name}. Welcome to Sundrop Town!")
