@@ -136,11 +136,11 @@ print("-----------------------------------------------------------")
 path = r"C:\Users\jaron\OneDrive - Ngee Ann Polytechnic\PRG1\final assignment"
 load_map(path + "\\level1.txt",game_map)
 user = input("your choice? ")
-while user != "Q":
-    if user == "N":
+while user.upper() != "Q":
+    if user.upper() == "N":
         name = input("Greetings, miner! What is your name? ")
         print(f"Pleased to meet you, {name}. Welcome to Sundrop Town!")
         print(show_town_menu(day))
         user = input("your choice? ")
-    if user == "B":
+    if user.upper() == "B":
         print(player["GP"]) 
