@@ -82,6 +82,20 @@ def initialize_game(game_map, fog, player):
     
 # This function draws the entire map, covered by the fof
 def draw_map(game_map, fog, player):
+    print("+" + "-" * MAP_WIDTH + "+")
+    for y in range(MAP_HEIGHT):
+        print("|", end="")
+        for x in range(MAP_WIDTH):
+            if (y, x) == (player['y'], player['x']):
+                print("M", end="")
+            elif 'portal' in player and (y, x) == player['portal']:
+                print("P", end="")
+            elif fog[y][x]:
+                print("?", end="")
+            else:
+                print(game_map[y][x], end="")
+        print("|")
+    print("+" + "-" * MAP_WIDTH + "+")
     return
 
 # This function draws the 3x3 viewport
