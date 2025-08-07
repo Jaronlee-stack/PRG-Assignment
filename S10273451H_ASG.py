@@ -66,6 +66,7 @@ def initialize_game(game_map, fog, player):
     
     # TODO: initialize player
     #   You will probably add other entries into the player dictionary
+    player['name'] = name
     player['x'] = 0
     player['y'] = 0
     player['copper'] = 0
@@ -75,7 +76,8 @@ def initialize_game(game_map, fog, player):
     player['day'] = 0
     player['steps'] = 0
     player['turns'] = TURNS_PER_DAY
-
+    
+    print("Pleased to meet you, {}. Welcome to Sundrop Town!".format(player['name']))
     clear_fog(fog, player)
     
 # This function draws the entire map, covered by the fof
