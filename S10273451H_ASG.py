@@ -159,6 +159,11 @@ def save_game(game_map, fog, player):
                 line += '1' if cell else '0'
             fog_saved.write(line + "\n")
     # save player
+    with open("save_player.txt", "w") as f: #rephrase
+        for key in player:
+            value = player[key]
+            f.write(f"{key}:{value}\n")
+    print("Game saved successfully!")
     return
         
 # This function loads the game
