@@ -1,17 +1,15 @@
-#Jaron Lee S10273451H
 from random import randint
 
 player = {}
 game_map = []
 fog = []
-day = 0
-pickaxe_lvl = 1
+
 MAP_WIDTH = 0
 MAP_HEIGHT = 0
 
 TURNS_PER_DAY = 20
 WIN_GP = 500
-backpack = 10 #capacity of backpack
+
 minerals = ['copper', 'silver', 'gold']
 mineral_names = {'C': 'copper', 'S': 'silver', 'G': 'gold'}
 pickaxe_price = [50, 150]
@@ -28,15 +26,18 @@ def load_map(filename, map_struct):
     global MAP_WIDTH
     global MAP_HEIGHT
     
-    map_struct.clear()
-
-    for i in map_file:
-        lines = i.strip("\n")
-        map_struct.append(list(lines))
-
     
+    map_list =[]
     # TODO: Add your map loading code here
-    
+    with open(filename,'r') as map_file:
+        map = ""
+        for i in map_file:
+            for j in i:
+                if j !='\n':
+                    map.join(j)
+            map_list.append(list(map))
+    map_struct.clear()
+    map_struct.extend(map_list)
     MAP_WIDTH = len(map_struct[0])
     MAP_HEIGHT = len(map_struct)
 
@@ -68,18 +69,6 @@ def initialize_game(game_map, fog, player):
     
 # This function draws the entire map, covered by the fof
 def draw_map(game_map, fog, player):
-    print(f"+{"-"*MAP_WIDTH}+")
-    for index in range(len(game_map)):
-        rowmap = game_map[index]
-        print("|",end= "")
-        for i in range(len(rowmap)):
-            if index ==player["y"] and i == player["x"]:
-                map_point = "M"
-            else:
-                map_point = rowmap[i]
-            print(map_point,end="")
-        print("|")
-    print(f"+{"-"*MAP_WIDTH}+")
     return
 
 # This function draws the 3x3 viewport
@@ -113,9 +102,8 @@ def show_main_menu():
     print("(Q)uit")
     print("------------------")
 
-def show_town_menu(day):
-    day += 1
-    print(f"Day {day}")
+def show_town_menu():
+    print()
     # TODO: Show Day
     print("----- Sundrop Town -----")
     print("(B)uy stuff")
@@ -138,35 +126,5 @@ print("  and live happily ever after?")
 print("-----------------------------------------------------------")
 
 # TODO: The game!
-path = r"C:\Users\jaron\OneDrive - Ngee Ann Polytechnic\PRG1\final assignment"
-load_map(path + "\\level1.txt",game_map)
-user = input("your choice? ")
-game_state = 'main'
-while True:
-    if game_state == 'main':
-        show_main_menu() #get input as choice
-        if user.upper() == 'N':
-            initialize_game()
-            game_state = 'town'
-        elif user.upper() == 'L':
-            load_game()
-            game_state = 'town'
-    elif game_state == 'town':
-        show_town_menu()
-        if user.upper()== 'B':
-            print("""----------------------- Shop Menu ------------------------- 
-(P)ickaxe upgrade to Level 2 to mine silver ore for 50 GP 
-(B)ackpack upgrade to carry 12 items for 20 GP 
-(L)eave shop -----------------------------------------------------------""")
-            if user.upper() =="P":
-                pickaxe_lvl += 1
-            elif user.upper() == "B":
-                backpack += 2
-            elif user.upper() == "L":
-                break
-            else:
-                print("Invalid input")
-
-    elif game_state == 'shop':
-        
-    elif game_state == 'mine':
+    
+    
