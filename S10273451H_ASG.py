@@ -169,8 +169,23 @@ def save_game(game_map, fog, player):
 # This function loads the game
 def load_game(game_map, fog, player):
     # load map
+    with open("save_map.txt", "r") as f:
+        game_map[:] = [list(line.strip()) for line in f]
     # load fog
+    with open("save_fog.txt", "r") as f:
+        fog[:] = [[cell == '1' for cell in line.strip()] for line in f]
     # load player
+    with open("save_player.txt", "r") as f:
+        player.clear() #flag
+        for line in f:
+            key, value = line.strip().split(":", 1)
+            if key in ['x', 'y', 'copper', 'silver', 'gold', 'GP', 'day', 'steps', 'turns', 'capacity', 'load', 'pickaxe_level']:
+                player[key] = int(value)
+            elif key == 'portal':
+                x, y = value.strip("()").split(",")
+                player[key] = (int(x), int(y))
+            else:
+                player[key] = value
     return
 
 def show_main_menu():
