@@ -166,6 +166,12 @@ def show_town_menu():
     print("Sa(V)e game")
     print("(Q)uit to main menu")
     print("------------------------")
+
+def sell_ore(player): # (New) Sells mined minerals for GP and checks if player meets win condition
+
+    for mineral in minerals:
+        qty = player[mineral]
+
             
 
 #--------------------------- MAIN GAME ---------------------------
