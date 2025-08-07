@@ -49,7 +49,7 @@ def clear_fog(fog, player):
     for py in [-1,0,1]:
         for px in [-1,0,1]:
             y = player['y'] + py
-            x = player['x'] + px
+            x = player['x'] + px   #change
             if 0 <= y < MAP_HEIGHT and 0 <= x < MAP_WIDTH:
                 fog[y][x] = False
     return
@@ -57,7 +57,11 @@ def clear_fog(fog, player):
 def initialize_game(game_map, fog, player):
     # initialize map
     load_map("level1.txt", game_map)
+    row = len(game_map)
+    col = len(game_map[0])
+    fog[:] =[[True for _ in range(col)] for _ in range(row)] #change
 
+    name = input("Greetings, miner!What is your name?")
     # TODO: initialize fog
     
     # TODO: initialize player
