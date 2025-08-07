@@ -88,7 +88,7 @@ def draw_map(game_map, fog, player):
         for x in range(MAP_WIDTH):
             if (y, x) == (player['y'], player['x']):
                 print("M", end="")
-            elif 'portal' in player and (y, x) == player['portal']:
+            elif 'portal' in player and (y, x) == player['portal']: #change
                 print("P", end="")
             elif fog[y][x]:
                 print("?", end="")
@@ -100,6 +100,23 @@ def draw_map(game_map, fog, player):
 
 # This function draws the 3x3 viewport
 def draw_view(game_map, fog, player):
+    print("+---+")
+    for py in [-1, 0, 1]:
+        print("|", end="")
+        for px in [-1, 0, 1]:
+            y = player['y'] + py
+            x = player['x'] + px
+            if 0 <= y < MAP_HEIGHT and 0 <= x < MAP_WIDTH:
+                if (y, x) == (player['y'], player['x']):
+                    print("M", end="")
+                elif fog[y][x]:
+                    print("?", end="")
+                else:
+                    print(game_map[y][x], end="")
+            else:
+                print("#", end="")
+        print("|")
+    print("+---+")
     return
 
 # This function shows the information for the player
