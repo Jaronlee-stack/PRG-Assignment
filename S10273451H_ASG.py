@@ -38,6 +38,7 @@ def load_map(filename, map_struct):
             map_list.append(list(map))
     map_struct.clear()
     map_struct.extend(map_list)
+
     MAP_WIDTH = len(map_struct[0])
     MAP_HEIGHT = len(map_struct)
 
@@ -45,6 +46,12 @@ def load_map(filename, map_struct):
 
 # This function clears the fog of war at the 3x3 square around the player
 def clear_fog(fog, player):
+    for py in [-1,0,1]:
+        for px in [-1,0,1]:
+            y = player['y'] + py
+            x = player['x'] + px
+            if 0 <= y < MAP_HEIGHT and 0 <= x < MAP_WIDTH:
+                fog[y][x] = False
     return
 
 def initialize_game(game_map, fog, player):
