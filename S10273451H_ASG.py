@@ -99,7 +99,7 @@ def draw_map(game_map, fog, player):
     return
 
 # This function draws the 3x3 viewport
-def draw_view(game_map, fog, player):
+def draw_view(game_map, fog, player): #change
     print("+---+")
     for py in [-1, 0, 1]:
         print("|", end="")
@@ -121,6 +121,15 @@ def draw_view(game_map, fog, player):
 
 # This function shows the information for the player
 def show_information(player):
+    print()
+    print("----- Player Information -----")
+    print("Name:{}".format(player['name']))
+
+    if 'portal' in player:
+        print("Portal position: {}".format(player['portal']))
+
+    else:
+        print("Portal position: (?,?)")
     return
 
 # This function saves the game
