@@ -189,6 +189,8 @@ def load_game(game_map, fog, player): #rephrase
     global MAP_WIDTH, MAP_HEIGHT
     MAP_WIDTH = len(game_map[0])
     MAP_HEIGHT = len(game_map)
+
+    print("Game loaded successfully!")
     return
 
 def show_main_menu():
