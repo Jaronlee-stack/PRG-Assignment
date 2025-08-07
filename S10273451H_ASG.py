@@ -167,7 +167,7 @@ def save_game(game_map, fog, player):
     return
         
 # This function loads the game
-def load_game(game_map, fog, player):
+def load_game(game_map, fog, player): #rephrase
     # load map
     with open("save_map.txt", "r") as f:
         game_map[:] = [list(line.strip()) for line in f]
@@ -186,6 +186,9 @@ def load_game(game_map, fog, player):
                 player[key] = (int(x), int(y))
             else:
                 player[key] = value
+    global MAP_WIDTH, MAP_HEIGHT
+    MAP_WIDTH = len(game_map[0])
+    MAP_HEIGHT = len(game_map)
     return
 
 def show_main_menu():
