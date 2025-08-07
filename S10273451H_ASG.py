@@ -145,7 +145,19 @@ def show_information(player):
 # This function saves the game
 def save_game(game_map, fog, player):
     # save map
+    with open("save_map.txt","w") as map_saved:
+        for row in game_map:
+            line ="" #research
+            for i in row:
+                line.join(i)
+            map_saved.write(line + "\n")
     # save fog
+    with open("save_fog.txt", "w") as fog_saved:
+        for row in fog:
+            line = ""
+            for cell in row:
+                line += '1' if cell else '0'
+            fog_saved.write(line + "\n")
     # save player
     return
         
