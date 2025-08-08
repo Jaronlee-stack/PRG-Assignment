@@ -244,9 +244,9 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
         print()
         print("----------------------- Shop Menu -------------------------")
         # Pickaxe upgrade options
-        if player['pickaxe_level'] == 1:
+        if player['pickaxe_lvl'] == 1:
             print("(P)ickaxe upgrade to Level 2 to mine silver ore for 50 GP")
-        elif player['pickaxe_level'] == 2:
+        elif player['pickaxe_lvl'] == 2:
             print("(P)ickaxe upgrade to Level 3 to mine gold ore for 150 GP")
         else:
             print("Pickaxe is already at max level (Level 3).")
