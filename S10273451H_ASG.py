@@ -425,5 +425,10 @@ while True:
             game_state = 'main'
         else:
             print("Invalid choice. Please try again.")
+    elif game_state == 'shop':
+        shop_menu(player)
+        game_state = 'town'
+    elif game_state == 'mine':
+        game_state = mine_menu(game_map, fog, player)
     
     
