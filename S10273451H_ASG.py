@@ -308,7 +308,7 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
             print("You can't carry any more, so you can't go that way.")
             return
         required_level = {'C': 1, 'S': 2, 'G': 3}[tile]
-        if player['pickaxe_level'] < required_level:
+        if player['pickaxe_lvl'] < required_level:
             print(f"Your pickaxe isn't strong enough to mine {mineral_names[tile]}.")
             return
         max_pieces = {'C': 5, 'S': 3, 'G': 2}[tile]
