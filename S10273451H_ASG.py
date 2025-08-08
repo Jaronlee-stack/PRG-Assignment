@@ -244,6 +244,20 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
 
         choice = input("Your choice? ").strip().upper()
 
+        if choice == 'P':
+            pickaxe_lvl = player['pickaxe_lvl']
+            if pickaxe_lvl < 3:
+                upgrade_cost = pickaxe_price[pickaxe_lvl-1]
+                if player['GP'] < upgrade_cost:
+                    print("Not enough GP for picaxe upgrade")
+                
+                else:
+                    player['GP'] -= upgrade_cost
+                    player['pickaxe_lvl'] += 1
+                    print(f"Pickaxe upgraded to level {player['pickaxe_lvl']}!")
+            else:
+                print("Your pickaxe is already at max level!")
+
 
 
         
