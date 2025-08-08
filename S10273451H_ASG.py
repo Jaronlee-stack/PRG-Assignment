@@ -242,7 +242,7 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
         print(f"Your GP: {player['GP']}")
         print("-----------------------------------------------------------")
 
-        choice = input("Your choice? ")
+        choice = input("Your choice? ").strip().upper()
 
 
 
