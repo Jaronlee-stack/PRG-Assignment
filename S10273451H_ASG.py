@@ -257,6 +257,20 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
                     print(f"Pickaxe upgraded to level {player['pickaxe_lvl']}!")
             else:
                 print("Your pickaxe is already at max level!")
+        elif choice == 'B':
+            if player['GP'] >= cost:
+                player['GP'] -= cost
+                player['capacity'] += 2
+                print(f"Backpack upgraded! You can now carry {player['capacity']} items.")
+            else:
+                print("Not enough GP for backpack upgrade.")
+
+        elif choice == 'L':
+            print("Leaving the shop...")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
 
 
 
