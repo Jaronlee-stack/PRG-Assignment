@@ -288,8 +288,8 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
     else:
         px, py = (0, 0)
 
-    new_x = player['x'] + x
-    new_y = player['y'] + dy
+    new_x = player['x'] + px
+    new_y = player['y'] + py
     if not (0 <= new_x < MAP_WIDTH and 0 <= new_y < MAP_HEIGHT):
         print("You can't go that way.")
         return
