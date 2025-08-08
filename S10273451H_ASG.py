@@ -79,6 +79,7 @@ def initialize_game(game_map, fog, player):
     player['load'] = 0
     player['pickaxe_lvl'] = 1
     player['portal'] = (0,0)
+    player['capacity'] = 10
     
     print("Pleased to meet you, {}. Welcome to Sundrop Town!".format(player['name']))
     clear_fog(fog, player)
