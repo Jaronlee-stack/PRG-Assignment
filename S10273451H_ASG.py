@@ -334,6 +334,47 @@ def portal(game_map, fog, player): # (New) Moves player, handles mining, fog cle
     if won:
         game_state = 'main'
 
+def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user movement, and in-mine actions
+
+    # Teleport to previous day's location
+    if 'portal' in player:
+        portal_location = player['portal']
+        if portal_location != (0, 0):
+            print(f"Teleporting to previous location at {portal_location}")
+            player['y'], player['x'] = portal_location
+            clear_fog(fog, player)
+
+    while player['turns'] > 0:
+        print()
+        print("---------------------------------------------------")
+        print(f"{'DAY ' + str(player['day']):^51}")
+        print("---------------------------------------------------")
+        print(f"DAY {player['day']}")
+        draw_view(game_map, fog, player)
+        print(f"Turns left: {player['turns']}     Load: {player['load']} / {player['capacity']}     Steps: {player['steps']}")
+        print("(WASD) to move")
+        print("(M)ap, (I)nformation, (P)ortal, (Q)uit to main menu")
+        action = input("Action? ").upper()
+        print("-------------------------------------------------------------")
+
+        if action in ['W', 'A', 'S', 'D']:
+            move_player(action, game_map, fog, player)
+            player['steps'] += 1
+            player['turns'] -= 1
+        elif action == 'M':
+            draw_map(game_map, fog, player)
+        elif action == 'I':
+            show_information(player)
+        elif action == 'P':
+            return portal(game_map, fog, player) or 'town'
+        elif action == 'Q':
+            print("Returning to main menu...")
+            return 'main'
+        else:
+            print("Invalid input.")
+
+    print("You are exhausted.")
+    return portal(game_map, fog, player) or 'town'
 #--------------------------- MAIN GAME ---------------------------
 game_state = 'main'
 print("---------------- Welcome to Sundrop Caves! ----------------")
