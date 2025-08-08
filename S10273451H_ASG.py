@@ -423,4 +423,7 @@ while True:
             save_game(game_map, fog, player)
         elif choice.upper() == 'Q':
             game_state = 'main'
+        else:
+            print("Invalid choice. Please try again.")
+    
     
