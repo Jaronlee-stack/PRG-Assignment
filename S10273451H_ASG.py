@@ -227,6 +227,7 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
             earned = qty * real_price
             player['GP'] += earned
             print("You sell {} {} ore for {} GP".format(qty,ore,earned))
+            player[ore] = 0
 
 def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
 
