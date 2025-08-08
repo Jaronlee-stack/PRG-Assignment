@@ -76,6 +76,7 @@ def initialize_game(game_map, fog, player):
     player['day'] = 0
     player['steps'] = 0
     player['turns'] = TURNS_PER_DAY
+    player['load'] = 0
     player['pickaxe_lvl'] = 1
     player['portal'] = (0,0)
     
@@ -133,8 +134,9 @@ def show_information(player): #rephrase
 
     else:
         print("Portal position: (?,?)")
-    
-    print(f"Pickaxe level: {level} ({level_name})")
+    pickaxe_lvl = player['picckaxe_lvl']
+    pickaxe_stats = ['copper', 'silver', 'gold'][pickaxe_lvl - 1]
+    print(f"Pickaxe level: {pickaxe_lvl} ({pickaxe_stats})")
     print("------------------------------")
     print(f"Load: {player['load']} / {player['capacity']}")
     print("------------------------------")
