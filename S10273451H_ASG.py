@@ -235,7 +235,8 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
         else:
             print("Pickaxe is already at max level (Level 3).")
         # Backpack upgrade
-        print(f"(B)ackpack upgrade to carry {player['capacity'] + 2} items for (cost) GP")
+        cost = player['capacity'] * 2
+        print(f"(B)ackpack upgrade to carry {player['capacity'] + 2} items for {cost}) GP")
         print("(L)eave shop")
         print("-----------------------------------------------------------")
         print(f"Your GP: {player['GP']}")
