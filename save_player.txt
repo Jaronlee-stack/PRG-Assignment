@@ -1,0 +1,14 @@
+name:nigger
+x:0
+y:0
+copper:0
+silver:0
+gold:0
+GP:24
+day:2
+steps:20
+turns:20
+capacity:10
+load:0
+pickaxe_level:1
+portal:(9, 0)

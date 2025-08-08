@@ -135,7 +135,7 @@ def show_information(player): #rephrase
 
     else:
         print("Portal position: (?,?)")
-    pickaxe_lvl = player['picckaxe_lvl']
+    pickaxe_lvl = player['pickaxe_lvl']
     pickaxe_stats = ['copper', 'silver', 'gold'][pickaxe_lvl - 1]
     print(f"Pickaxe level: {pickaxe_lvl} ({pickaxe_stats})")
     print("------------------------------")
