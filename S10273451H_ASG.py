@@ -306,16 +306,16 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
         max_pieces = {'C': 5, 'S': 3, 'G': 2}[tile]
         mined = randint(1, max_pieces)
         space_left = player['capacity'] - player['load']
-        actual_mined = min(mined, space_left)
-        player[mineral_names[tile]] += actual_mined
-        player['load'] += actual_mined
+        ores_mined = min(mined, space_left)
+        player[mineral_names[tile]] += ores_mined
+        player['load'] += ores_mined
         print(f"You mined {mined} piece(s) of {mineral_names[tile]}.")
-        if actual_mined < mined:
-            print(f"...but you can only carry {actual_mined} more piece(s)!")
+        if ores_mined < mined:
+            print(f"...but you can only carry {ores_mined} more piece(s)!")
         game_map[new_y][new_x] = ' '
     elif tile == 'T':
         print("You stepped on the town portal. Returning to town...")
-        use_portal(game_map, fog, player)
+        portal(game_map, fog, player)
         return
 
     player['x'], player['y'] = new_x, new_y
