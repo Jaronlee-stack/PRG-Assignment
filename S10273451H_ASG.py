@@ -76,11 +76,12 @@ def initialize_game(game_map, fog, player):
     player['day'] = 0
     player['steps'] = 0
     player['turns'] = TURNS_PER_DAY
-    player['picaxe_lvl'] = 1
+    player['pickaxe_lvl'] = 1
     player['portal'] = (0,0)
     
     print("Pleased to meet you, {}. Welcome to Sundrop Town!".format(player['name']))
     clear_fog(fog, player)
+    return
     
 # This function draws the entire map, covered by the fof
 def draw_map(game_map, fog, player):
@@ -122,7 +123,7 @@ def draw_view(game_map, fog, player): #change
     return
 
 # This function shows the information for the player
-def show_information(player):
+def show_information(player): #rephrase
     print()
     print("----- Player Information -----")
     print("Name:{}".format(player['name']))
