@@ -219,8 +219,14 @@ def show_town_menu():
 
 def sell_ore(player): # (New) Sells mined minerals for GP and checks if player meets win condition
 
-    for mineral in minerals:
-        qty = player[mineral]
+    for ore in minerals:
+        qty = player[ore]
+        if qty > 0:
+            low_price, high_price = prices[ore]
+            real_price = randint(low_price,high_price)
+            earned = qty * real_price
+            player['GP'] += earned
+            print("You sell {} {} ore for {} GP".format(qty,ore,earned))
 
 def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
 
@@ -254,7 +260,7 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
                 else:
                     player['GP'] -= upgrade_cost
                     player['pickaxe_lvl'] += 1
-                    print(f"Pickaxe upgraded to level {player['pickaxe_lvl']}!")
+                    print(f"Pickaxe upgraded to level {player['pickaxe_lvl']}!") #change
             else:
                 print("Your pickaxe is already at max level!")
         elif choice == 'B':
