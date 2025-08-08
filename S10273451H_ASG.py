@@ -30,11 +30,11 @@ def load_map(filename, map_struct):
     map_list =[]
     # TODO: Add your map loading code here
     with open(filename,'r') as map_file:
-        map = ""
         for i in map_file:
+            map = ""
             for j in i:
                 if j !='\n':
-                    map.join(j)
+                    map+=j
             map_list.append(list(map))
     map_struct.clear()
     map_struct.extend(map_list)
@@ -101,7 +101,7 @@ def draw_map(game_map, fog, player):
                 print(game_map[y][x], end="")
         print("|")
     print("+" + "-" * MAP_WIDTH + "+")
-    return
+
 
 # This function draws the 3x3 viewport
 def draw_view(game_map, fog, player): #change
@@ -122,7 +122,7 @@ def draw_view(game_map, fog, player): #change
                 print("#", end="")
         print("|")
     print("+---+")
-    return
+
 
 # This function shows the information for the player
 def show_information(player): #rephrase
@@ -237,7 +237,7 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
         print(f"And it only took you {player['day']} days and {player['steps']} steps! You win!")
         print("-------------------------------------------------------------")
         return True
-    return False
+    return False #research
 def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
 
     while True:
