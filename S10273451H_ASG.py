@@ -321,7 +321,7 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
     player['x'], player['y'] = new_x, new_y
     clear_fog(fog, player)
 
-def use_portal(game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
+def portal(game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
 
     player['portal'] = (player['y'], player['x'])
     print("You place your portal stone here and zap back to town.")
