@@ -280,7 +280,46 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
         else:
             print("Invalid choice. Please try again.")
 
+def move_player(direction, game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
 
+    direction_map = {'W': (0, -1), 'S': (0, 1), 'A': (-1, 0), 'D': (1, 0)}
+    if direction in direction_map:
+        px, py = direction_map[direction]
+    else:
+        px, py = (0, 0)
+
+    new_x = player['x'] + x
+    new_y = player['y'] + dy
+    if not (0 <= new_x < MAP_WIDTH and 0 <= new_y < MAP_HEIGHT):
+        print("You can't go that way.")
+        return
+
+    tile = game_map[new_y][new_x]
+    if tile in mineral_names:
+        if player['load'] >= player['capacity']:
+            print("You can't carry any more, so you can't go that way.")
+            return
+        required_level = {'C': 1, 'S': 2, 'G': 3}[tile]
+        if player['pickaxe_level'] < required_level:
+            print(f"Your pickaxe isn't strong enough to mine {mineral_names[tile]}.")
+            return
+        max_pieces = {'C': 5, 'S': 3, 'G': 2}[tile]
+        mined = randint(1, max_pieces)
+        space_left = player['capacity'] - player['load']
+        actual_mined = min(mined, space_left)
+        player[mineral_names[tile]] += actual_mined
+        player['load'] += actual_mined
+        print(f"You mined {mined} piece(s) of {mineral_names[tile]}.")
+        if actual_mined < mined:
+            print(f"...but you can only carry {actual_mined} more piece(s)!")
+        game_map[new_y][new_x] = ' '
+    elif tile == 'T':
+        print("You stepped on the town portal. Returning to town...")
+        use_portal(game_map, fog, player)
+        return
+
+    player['x'], player['y'] = new_x, new_y
+    clear_fog(fog, player)
 
         
 
