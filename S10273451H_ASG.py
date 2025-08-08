@@ -222,7 +222,20 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
     for mineral in minerals:
         qty = player[mineral]
 
-            
+def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
+
+    while True:
+        print()
+        print("----------------------- Shop Menu -------------------------")
+        # Pickaxe upgrade options
+        if player['pickaxe_level'] == 1:
+            print("(P)ickaxe upgrade to Level 2 to mine silver ore for 50 GP")
+        elif player['pickaxe_level'] == 2:
+            print("(P)ickaxe upgrade to Level 3 to mine gold ore for 150 GP")
+        else:
+            print("Pickaxe is already at max level (Level 3).")
+
+        
 
 #--------------------------- MAIN GAME ---------------------------
 game_state = 'main'
