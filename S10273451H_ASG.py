@@ -386,5 +386,19 @@ print("  and live happily ever after?")
 print("-----------------------------------------------------------")
 
 # TODO: The game!
+while True:
+    if game_state == 'main':
+        show_main_menu()
+        choice = input("Your choice? ").strip().upper()
+        if choice.upper() == 'N':
+            initialize_game(game_map, fog, player)
+            game_state = 'town' 
+            
+        elif choice.upper() == 'L':
+            load_game(game_map, fog, player)
+            game_state = 'town'
     
+        elif choice.upper() == 'Q':
+            print("Thanks for playing Sundrop Caves! Goodbye!")
+            break
     
