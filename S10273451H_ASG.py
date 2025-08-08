@@ -401,4 +401,6 @@ while True:
         elif choice.upper() == 'Q':
             print("Thanks for playing Sundrop Caves! Goodbye!")
             break
+        else:
+            print("Invalid choice. Please try again.")
     
