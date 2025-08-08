@@ -382,7 +382,7 @@ def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user
             print("Invalid input.")
 
     print("You are exhausted.")
-    return portal(game_map, fog, player) 
+    return portal(game_map, fog, player) or 'town'
 #--------------------------- MAIN GAME ---------------------------
 game_state = 'main'
 print("---------------- Welcome to Sundrop Caves! ----------------")
@@ -401,11 +401,11 @@ while True:
         if choice.upper() == 'N':
             initialize_game(game_map, fog, player)
             game_state = 'town' 
-            
+
         elif choice.upper() == 'L':
             load_game(game_map, fog, player)
             game_state = 'town'
-    
+            choice = input("Your choice? ").strip().upper()
         elif choice.upper() == 'Q':
             print("Thanks for playing Sundrop Caves! Goodbye!")
             break
