@@ -374,7 +374,7 @@ def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user
             print("Invalid input.")
 
     print("You are exhausted.")
-    return portal(game_map, fog, player) or 'town'
+    return portal(game_map, fog, player) 
 #--------------------------- MAIN GAME ---------------------------
 game_state = 'main'
 print("---------------- Welcome to Sundrop Caves! ----------------")
