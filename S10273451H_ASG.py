@@ -321,7 +321,18 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
     player['x'], player['y'] = new_x, new_y
     clear_fog(fog, player)
 
-        
+def use_portal(game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
+
+    player['portal'] = (player['y'], player['x'])
+    print("You place your portal stone here and zap back to town.")
+    won = sell_ore(player)
+    player['day'] += 1
+    player['turns'] = TURNS_PER_DAY
+    player['load'] = 0
+    player['x'], player['y'] = 0, 0
+    clear_fog(fog, player)
+    if won:
+        game_state = 'main'
 
 #--------------------------- MAIN GAME ---------------------------
 game_state = 'main'
