@@ -403,4 +403,24 @@ while True:
             break
         else:
             print("Invalid choice. Please try again.")
+
+    elif game_state == 'town':
+        show_town_menu()
+        choice = input("Your choice? ").upper()
+        if choice.upper() == 'B':
+            game_state = 'shop'
+        elif choice.upper() == 'I':
+            show_information(player)
+        elif choice.upper() == 'M':
+            draw_map(game_map, fog, player)
+        elif choice.upper() == 'E':
+            if 'portal' in player:
+                player['x'], player['y'] = player['portal']
+            else:
+                player['x'], player['y'] = (0, 0)
+            game_state = 'mine'
+        elif choice.upper() == 'V':
+            save_game(game_map, fog, player)
+        elif choice.upper() == 'Q':
+            game_state = 'main'
     
