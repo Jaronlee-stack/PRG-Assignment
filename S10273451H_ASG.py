@@ -208,6 +208,7 @@ def show_main_menu():
 def show_town_menu():
     print()
     # TODO: Show Day
+    print("Day {}".format(player['day']))
     print("----- Sundrop Town -----")
     print("(B)uy stuff")
     print("See Player (I)nformation")
