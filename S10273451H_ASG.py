@@ -73,7 +73,7 @@ def initialize_game(game_map, fog, player):
     player['silver'] = 0
     player['gold'] = 0
     player['GP'] = 0
-    player['day'] = 0
+    player['day'] = 1
     player['steps'] = 0
     player['turns'] = TURNS_PER_DAY
     player['load'] = 0
@@ -220,7 +220,6 @@ def show_town_menu():
     print("------------------------")
 
 def sell_ore(player): # (New) Sells mined minerals for GP and checks if player meets win condition
-
     for ore in minerals:
         qty = player[ore]
         if qty > 0:
@@ -230,7 +229,15 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
             player['GP'] += earned
             print("You sell {} {} ore for {} GP".format(qty,ore,earned))
             player[ore] = 0
-
+    print(f"You now have {player['GP']} GP!")
+    if player['GP'] >= WIN_GP:
+        print("-------------------------------------------------------------")
+        print(f"Woo-hoo! Well done, {player['name']}, you have {player['GP']} GP!")
+        print("You now have enough to retire and play video games every day.")
+        print(f"And it only took you {player['day']} days and {player['steps']} steps! You win!")
+        print("-------------------------------------------------------------")
+        return True
+    return False
 def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
 
     while True:

@@ -1,14 +1,14 @@
-name:nigger
+name:m
 x:0
 y:0
 copper:0
 silver:0
 gold:0
-GP:24
+GP:10
 day:2
 steps:20
 turns:20
-capacity:10
+capacity:12
 load:0
 pickaxe_level:1
-portal:(9, 0)
+portal:(0, 7)
