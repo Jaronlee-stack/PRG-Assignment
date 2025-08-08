@@ -234,6 +234,16 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
             print("(P)ickaxe upgrade to Level 3 to mine gold ore for 150 GP")
         else:
             print("Pickaxe is already at max level (Level 3).")
+        # Backpack upgrade
+        print(f"(B)ackpack upgrade to carry {player['capacity'] + 2} items for (cost) GP")
+        print("(L)eave shop")
+        print("-----------------------------------------------------------")
+        print(f"Your GP: {player['GP']}")
+        print("-----------------------------------------------------------")
+
+
+
+
 
         
 
