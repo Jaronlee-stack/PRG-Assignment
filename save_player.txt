@@ -1,14 +1,14 @@
-name:m
+name:e
 x:0
 y:0
 copper:0
 silver:0
 gold:0
-GP:20
-day:2
-steps:7
+GP:21
+day:7
+steps:48
 turns:20
 load:0
-pickaxe_lvl:1
-portal:(1, 5)
-capacity:10
+pickaxe_lvl:2
+portal:(6, 3)
+capacity:14

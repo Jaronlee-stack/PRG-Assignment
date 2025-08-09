@@ -231,15 +231,17 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
             print("You sell {} {} ore for {} GP".format(qty,ore,earned))
             sales_data.append((qty, ore, earned))
             player[ore] = 0
+
+    
     print(f"You now have {player['GP']} GP!")
-    if player['GP'] >= WIN_GP:
+    won =player['GP'] >= WIN_GP
+    if won:
         print("-------------------------------------------------------------")
         print(f"Woo-hoo! Well done, {player['name']}, you have {player['GP']} GP!")
         print("You now have enough to retire and play video games every day.")
         print(f"And it only took you {player['day']} days and {player['steps']} steps! You win!")
         print("-------------------------------------------------------------")
-        return True
-    return False #research
+    return sales_data, won
     
 def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
 
@@ -334,11 +336,12 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
     clear_fog(fog, player)
 
 def portal(game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
-    sell_ore(player)
     player['portal'] = (player['y'], player['x'])
-    print("You sell {} {} ore for {} GP".format(qty,ore,earned))
+    sales_data, won = sell_ore(player)
+    for qty,ore,earned in sales_data:
+        print("You sell {} {} ore for {} GP".format(qty,ore,earned))
     print("You place your portal stone here and zap back to town.")
-    won = sell_ore(player)
+    won = player['GP'] >= WIN_GP
     player['day'] += 1
     player['turns'] = TURNS_PER_DAY
     player['load'] = 0
