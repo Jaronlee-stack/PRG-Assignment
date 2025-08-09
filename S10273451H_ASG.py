@@ -419,6 +419,18 @@ def save_high_score(player):
     with open("high_scores.txt", "w") as f:
         for name, days, steps in scores:
             f.write(f"{name}:{days}:{steps}\n")
+
+def show_high_scores():
+    print("===== HIGH SCORES =====")
+    try:
+        with open("high_scores.txt", "r") as f:
+            for i, line in enumerate(f, 1):
+                name, days, steps = line.strip().split(":")
+                print(f"{i}. {name} - {days} day(s), {steps} step(s)")
+    except FileNotFoundError:
+        print("No high scores yet!")
+    print("========================")
+    print()
 #--------------------------- MAIN GAME ---------------------------
 game_state = 'main'
 print("---------------- Welcome to Sundrop Caves! ----------------")
