@@ -167,7 +167,7 @@ def save_game(game_map, fog, player):
         for key in player:
             value = player[key]
             file.write(f"{key}:{value}\n")
-    print("Game saved successfully!")
+    print("Game saved.")
     return
         
 # This function loads the game
@@ -282,12 +282,11 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
             if player['GP'] >= cost:
                 player['GP'] -= cost
                 player['capacity'] += 2
-                print(f"Backpack upgraded! You can now carry {player['capacity']} items.")
-            else:
+                print(f"Congratulations! You can now carry {player['capacity']} items.")
                 print("Not enough GP for backpack upgrade.")
 
         elif choice == 'L':
-            print("Leaving the shop...")
+            print("Bye! See you again!")
             break
 
         else:
@@ -318,7 +317,7 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
             player['turns'] =0 
             return
         required_level = {'C': 1, 'S': 2, 'G': 3}[tile]
-        if player['pickaxe_lvl'] < required_level:
+        if int(player['pickaxe_lvl']) < required_level:
             print(f"Your pickaxe isn't strong enough to mine {mineral_names[tile]}.")
             return
         max_pieces = {'C': 5, 'S': 3, 'G': 2}[tile]
@@ -341,10 +340,10 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
 
 def portal(game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
     player['portal'] = (player['y'], player['x'])
-    sales_data, won = sell_ore(player)
-    for qty,ore,earned in sales_data:
-        print("You sell {} {} ore for {} GP".format(qty,ore,earned))
     print("You place your portal stone here and zap back to town.")
+    sales_data, won = sell_ore(player)
+
+    
     won = player['GP'] >= WIN_GP
     player['day'] += 1
     player['turns'] = TURNS_PER_DAY
@@ -363,9 +362,10 @@ def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user
             print(f"Teleporting to previous location at {portal_location}")
             player['y'], player['x'] = portal_location
             clear_fog(fog, player)
-    print("\n---------------------------------------------------")
-    print(f"{'DAY ' + str(player['day']):^51}")
-    print("---------------------------------------------------")
+    if player['turns'] == TURNS_PER_DAY:
+        print("\n---------------------------------------------------")
+        print(f"{'DAY ' + str(player['day']):^51}")
+        print("---------------------------------------------------")
     while player['turns'] > 0:
         print()
 

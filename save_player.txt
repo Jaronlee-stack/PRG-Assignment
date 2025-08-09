@@ -1,14 +1,14 @@
-name:e
+name:cher
 x:0
 y:0
 copper:0
 silver:0
 gold:0
-GP:21
-day:7
-steps:48
+GP:28
+day:5
+steps:32
 turns:20
 load:0
 pickaxe_lvl:2
-portal:(6, 3)
-capacity:14
+portal:(2, 13)
+capacity:10
