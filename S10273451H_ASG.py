@@ -487,5 +487,7 @@ while True:
         game_state = 'town'
     elif game_state == 'mine':
         game_state = mine_menu(game_map, fog, player)
+    elif choice.upper() == 'H':
+        show_high_scores()
     
     
