@@ -241,6 +241,7 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
         print("You now have enough to retire and play video games every day.")
         print(f"And it only took you {player['day']} days and {player['steps']} steps! You win!")
         print("-------------------------------------------------------------")
+        save_high_score(player)
     return sales_data, won
     
 def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
