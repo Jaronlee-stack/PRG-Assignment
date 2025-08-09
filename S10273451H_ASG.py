@@ -362,9 +362,7 @@ def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user
 
     while player['turns'] > 0:
         print()
-        print("---------------------------------------------------")
-        print(f"{'DAY ' + str(player['day']):^51}")
-        print("---------------------------------------------------")
+
         print(f"DAY {player['day']}")
         draw_view(game_map, fog, player)
         print(f"Turns left: {player['turns']}     Load: {player['load']} / {player['capacity']}     Steps: {player['steps']}")
