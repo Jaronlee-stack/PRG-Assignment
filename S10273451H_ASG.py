@@ -220,6 +220,7 @@ def show_town_menu():
     print("------------------------")
 
 def sell_ore(player): # (New) Sells mined minerals for GP and checks if player meets win condition
+    sales_data = []
     for ore in minerals:
         qty = player[ore]
         if qty > 0:
@@ -228,6 +229,7 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
             earned = qty * real_price
             player['GP'] += earned
             print("You sell {} {} ore for {} GP".format(qty,ore,earned))
+            sales_data.append((qty, ore, earned))
             player[ore] = 0
     print(f"You now have {player['GP']} GP!")
     if player['GP'] >= WIN_GP:
@@ -238,6 +240,7 @@ def sell_ore(player): # (New) Sells mined minerals for GP and checks if player m
         print("-------------------------------------------------------------")
         return True
     return False #research
+    
 def shop_menu(player): # (New) Displays shop options for pickaxe and backpack upgrades
 
     while True:
@@ -331,8 +334,9 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
     clear_fog(fog, player)
 
 def portal(game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
-
+    sell_ore(player)
     player['portal'] = (player['y'], player['x'])
+    print("You sell {} {} ore for {} GP".format(qty,ore,earned))
     print("You place your portal stone here and zap back to town.")
     won = sell_ore(player)
     player['day'] += 1
