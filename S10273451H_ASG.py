@@ -128,7 +128,7 @@ def draw_view(game_map, fog, player): #change
 def show_information(player): #rephrase
     print()
     print("----- Player Information -----")
-    print("Name:{}".format(player['name']))
+    print("Name: {}".format(player['name']))
 
     if 'portal' in player:
         print("Portal position: {}".format(player['portal']))
