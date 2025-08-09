@@ -395,6 +395,31 @@ def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user
 
     print("You are exhausted.")
     return portal(game_map, fog, player) or 'town'
+
+def save_high_score(player):
+    # Read existing scores
+    scores = []
+    try:
+        with open("high_scores.txt", "r") as f:
+            for line in f:
+                name, days, steps = line.strip().split(":")
+                scores.append((name, int(days), int(steps)))
+    except FileNotFoundError:
+        pass  # no high score file yet
+
+    # Add new score
+    scores.append((player['name'], player['day'], player['steps']))
+
+    # Sort by fewest days, then fewest steps
+    scores.sort(key=lambda s: (s[1], s[2]))
+
+    # Keep top 10
+    scores = scores[:10]
+
+    # Save back
+    with open("high_scores.txt", "w") as f:
+        for name, days, steps in scores:
+            f.write(f"{name}:{days}:{steps}\n")
 #--------------------------- MAIN GAME ---------------------------
 game_state = 'main'
 print("---------------- Welcome to Sundrop Caves! ----------------")
