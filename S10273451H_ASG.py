@@ -305,7 +305,11 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
     if not (0 <= new_x < MAP_WIDTH and 0 <= new_y < MAP_HEIGHT):
         print("You can't go that way.")
         return
-
+    if player['load'] >= player['capacity']:
+            tile = game_map[new_y][new_x]
+            if tile in mineral_names:  # trying to mine
+                print("You can't carry anymore, so you can't go that way")
+                return
     tile = game_map[new_y][new_x]
 
     if tile in mineral_names:
