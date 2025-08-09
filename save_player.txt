@@ -1,14 +1,14 @@
-name:n
+name:m
 x:0
 y:0
 copper:0
 silver:0
 gold:0
 GP:0
-day:1
-steps:0
+day:2
+steps:20
 turns:20
 load:0
 pickaxe_lvl:1
-portal:(0, 0)
-capacity:10
+portal:(6, 1)
+capacity:12

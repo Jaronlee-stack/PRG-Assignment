@@ -160,28 +160,28 @@ def save_game(game_map, fog, player):
         for row in fog:
             line = ""
             for cell in row:
-                line += '1' if cell else '0'
+                line += '1' if cell else '0' #change
             fog_saved.write(line + "\n")
     # save player
-    with open("save_player.txt", "w") as f: #rephrase
+    with open("save_player.txt", "w") as file: 
         for key in player:
             value = player[key]
-            f.write(f"{key}:{value}\n")
+            file.write(f"{key}:{value}\n")
     print("Game saved successfully!")
     return
         
 # This function loads the game
-def load_game(game_map, fog, player): #rephrase
+def load_game(game_map, fog, player): 
     # load map
-    with open("save_map.txt", "r") as f:
-        game_map[:] = [list(line.strip()) for line in f]
+    with open("save_map.txt", "r") as file:
+        game_map[:] = [list(line.strip()) for line in file] #change
     # load fog
-    with open("save_fog.txt", "r") as f:
-        fog[:] = [[cell == '1' for cell in line.strip()] for line in f]
+    with open("save_fog.txt", "r") as file:
+        fog[:] = [[cell == '1' for cell in line.strip()] for line in file]
     # load player
-    with open("save_player.txt", "r") as f:
+    with open("save_player.txt", "r") as file:
         player.clear() #flag
-        for line in f:
+        for line in file:
             key, value = line.strip().split(":", 1)
             if key in ['x', 'y', 'copper', 'silver', 'gold', 'GP', 'day', 'steps', 'turns', 'capacity', 'load', 'pickaxe_level']:
                 player[key] = int(value)
@@ -252,7 +252,7 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
             print("Pickaxe is already at max level (Level 3).")
         # Backpack upgrade
         cost = player['capacity'] * 2
-        print(f"(B)ackpack upgrade to carry {player['capacity'] + 2} items for {cost}) GP")
+        print(f"(B)ackpack upgrade to carry {player['capacity'] + 2} items for {cost} GP")
         print("(L)eave shop")
         print("-----------------------------------------------------------")
         print(f"Your GP: {player['GP']}")
