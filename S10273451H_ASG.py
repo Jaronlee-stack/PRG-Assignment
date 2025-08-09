@@ -399,13 +399,12 @@ def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user
 def save_high_score(player):
     # Read existing scores
     scores = []
-    try:
-        with open("high_scores.txt", "r") as f:
-            for line in f:
-                name, days, steps = line.strip().split(":")
-                scores.append((name, int(days), int(steps)))
-    except FileNotFoundError:
-        pass  # no high score file yet
+
+    with open("high_scores.txt", "r") as f:
+        for line in f:
+            name, days, steps = line.strip().split(":")
+            scores.append((name, int(days), int(steps)))
+
 
     # Add new score
     scores.append((player['name'], player['day'], player['steps']))
