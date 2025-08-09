@@ -363,7 +363,9 @@ def mine_menu(game_map, fog, player): # (New) Handles mining gameplay loop, user
             print(f"Teleporting to previous location at {portal_location}")
             player['y'], player['x'] = portal_location
             clear_fog(fog, player)
-
+    print("\n---------------------------------------------------")
+    print(f"{'DAY ' + str(player['day']):^51}")
+    print("---------------------------------------------------")
     while player['turns'] > 0:
         print()
 
