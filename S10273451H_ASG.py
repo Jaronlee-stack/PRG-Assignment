@@ -153,7 +153,7 @@ def save_game(game_map, fog, player):
         for row in game_map:
             line ="" #research
             for i in row:
-                line.join(i)
+                line+=i
             map_saved.write(line + "\n")
     # save fog
     with open("save_fog.txt", "w") as fog_saved:
@@ -289,7 +289,6 @@ def shop_menu(player): # (New) Displays shop options for pickaxe and backpack up
             print("Invalid choice. Please try again.")
 
 def move_player(direction, game_map, fog, player): # (New) Moves player, handles mining, fog clearing, and portal use
-
     direction_map = {'W': (0, -1), 'S': (0, 1), 'A': (-1, 0), 'D': (1, 0)}
     if direction in direction_map:
         px, py = direction_map[direction]
@@ -303,9 +302,11 @@ def move_player(direction, game_map, fog, player): # (New) Moves player, handles
         return
 
     tile = game_map[new_y][new_x]
+
     if tile in mineral_names:
         if player['load'] >= player['capacity']:
             print("You can't carry any more, so you can't go that way.")
+            player['turns'] =0 
             return
         required_level = {'C': 1, 'S': 2, 'G': 3}[tile]
         if player['pickaxe_lvl'] < required_level:

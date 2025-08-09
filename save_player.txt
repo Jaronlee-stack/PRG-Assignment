@@ -4,11 +4,11 @@ y:0
 copper:0
 silver:0
 gold:0
-GP:0
+GP:20
 day:2
-steps:20
+steps:7
 turns:20
 load:0
 pickaxe_lvl:1
-portal:(6, 1)
-capacity:12
+portal:(1, 5)
+capacity:10
